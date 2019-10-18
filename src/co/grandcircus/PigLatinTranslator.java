@@ -1,0 +1,64 @@
+package co.grandcircus;
+
+public class PigLatinTranslator
+{
+   public final String vowelRegex = "[AEIOUYaeiouy]";
+   //https://www.regular-expressions.info/charclassintersect.html 
+   public final String consRegex = "[BCDFGHIJKLMNPQRSTVWXYbcdfghijklmnpqrstvwxy]";
+   //As for the question "Why use regexes here?, it's just easier to type than going through a character array to check for vowels and so forth.
+   
+   public String translateWord(String wordToBeTranslated)
+   {
+      String translated = "";
+      
+      //Convert input to lowercase.
+      wordToBeTranslated = wordToBeTranslated.toLowerCase();
+      
+      int cIndex = 0;
+      for (char c : wordToBeTranslated.toCharArray())
+      {
+         String character = Character.toString(c);
+         
+         //Is this a vowel?
+         if (character.matches(vowelRegex)) {
+            //This is a vowel, and it's the first character in the word.
+            if (cIndex == 0) {
+               //This is a special case: add "way" to the end of the word.
+               translated = wordToBeTranslated + "way";
+               //We don't want ANY further action to occur. Return right now!
+               return translated;
+            } 
+            else {
+               //This is a vowel...and we've reached it after traversing several consonants.
+               translated = wordToBeTranslated.substring(cIndex, wordToBeTranslated.length) + translated + "ay";
+               //We don't want any further action to occur.
+               return translated;
+            }   
+         }
+         //Is this a consonant?
+         else if (character.matches(consRegex))
+         {
+            translated += character; //Causes word to grow from right
+         }
+       //There are non-word and non-printing characters that could conceivably wind up here!
+         else
+         {
+            //For now, just go on to the next letter.
+            
+         }
+         
+         //Remember to manually update the index!
+         cIndex++;
+      }
+      
+      //If we get to this point, something went seriously wrong! 
+      //Dump debug information.
+      return "ERROR: translating " + wordToBeTranslated +
+            " with result "+ translated;
+   }
+   
+   public String translateSentence(String toBeTranslated)
+   {
+      return "";
+   }
+}

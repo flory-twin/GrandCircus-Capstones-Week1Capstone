@@ -30,7 +30,7 @@ public class PigLatinTranslator
             } 
             else {
                //This is a vowel...and we've reached it after traversing several consonants.
-               translated = wordToBeTranslated.substring(cIndex, wordToBeTranslated.length) + translated + "ay";
+               translated = wordToBeTranslated.substring(cIndex, wordToBeTranslated.length()) + translated + "ay";
                //We don't want any further action to occur.
                return translated;
             }   

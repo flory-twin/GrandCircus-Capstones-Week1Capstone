@@ -9,6 +9,7 @@ import co.grandcircus.utility.StringCaser;
 class StringCaserTest
 {
    public static String caseId = "StringCaserTest.";
+   
    @Test
    void testIsTitleCase()
    {

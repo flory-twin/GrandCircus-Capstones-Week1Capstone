@@ -13,7 +13,7 @@ public class PigLatinTranslator
       
       //For Extended Challenge 1, if the word's cased as Title Case, we'll need to restore that after we finish.
       //For all other cases, including MiXeD CAsING, UPPERCASE, and lowercase, leaving the letter casing the same will not affect the word's casing.
-      
+      wordToBeTranslated = wordToBeTranslated.toLowerCase();
       
       int cIndex = 0;
       for (char c : wordToBeTranslated.toCharArray())

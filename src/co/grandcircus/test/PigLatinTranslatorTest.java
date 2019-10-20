@@ -19,7 +19,7 @@ public class PigLatinTranslatorTest
       String methodId = "testSingleWordTranslation: ";
       PigLatinTranslator underTest = new PigLatinTranslator();
       
-      assertEquals("isthay",
+      assertEquals("Isthay",
          underTest.translateWord("This"), 
          caseId + methodId + "'This' should have translated to 'isthay'.");
       

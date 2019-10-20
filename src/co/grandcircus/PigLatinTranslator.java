@@ -2,21 +2,22 @@ package co.grandcircus;
 
 import co.grandcircus.utility.StringCaser;
 
+enum Case{UPPER, LOWER, TITLE}
+
 public class PigLatinTranslator
 {
-   public final String vowelRegex = "[AEIOUYaeiouy]";
-   //https://www.regular-expressions.info/charclassintersect.html 
+   public final String vowelRegex = "[AEIOUYaeiouy]"; 
    public final String consRegex = "[BCDFGHIJKLMNPQRSTVWXYbcdfghijklmnpqrstvwxy]";
-   //As for the question "Why use regexes here?, it's just easier to type than going through a character array to check for vowels and so forth.
+   public final String puncRegex = "[~`!@#$%^&*()-_=+\\[\\]{};:'\\\",<>?/\\]";
    
    public String translateWord(String wordToBeTranslated)
    {
       String translated = "";
-      
+      //Case wordCase;
+      //if (wordToBeTranslated.)
       //For Extended Challenge 1, if the word's cased as Title Case, we'll need to restore that after we finish.
       //For all other cases, including MiXeD CAsING, UPPERCASE, and lowercase, leaving the letter casing the same will not affect the word's casing.
       boolean isTitleCase = StringCaser.isTitleCase(wordToBeTranslated);
-      wordToBeTranslated = wordToBeTranslated.toLowerCase();
       
       int cIndex = 0;
       for (char c : wordToBeTranslated.toCharArray())

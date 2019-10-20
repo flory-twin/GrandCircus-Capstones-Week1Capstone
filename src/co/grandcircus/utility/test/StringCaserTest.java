@@ -85,4 +85,95 @@ class StringCaserTest
             "toTitleCase(\"" + input + "\") should have returned \"" + expected + "\".");
    }
    
+   @Test
+   void testIsLowerCase()
+   {
+      String methodId = "testIsLowerCase(): ";
+      
+      String input = "this";
+      boolean expected = true;
+      assertEquals(
+            expected,
+            StringCaser.isLowerCase(input),
+            caseId + methodId + 
+            "isLowerCase(\"" + input + "\") should have returned \"" + expected + "\".");
+      
+      input = "THIS";
+      expected = false;
+      assertEquals(
+            expected,
+            StringCaser.isLowerCase(input),
+            caseId + methodId + 
+            "isLowerCase(\"" + input + "\") should have returned \"" + expected + "\".");
+   
+      input = "tHis";
+      expected = false;
+      assertEquals(
+            expected,
+            StringCaser.isLowerCase(input),
+            caseId + methodId + 
+            "isLowerCase(\"" + input + "\") should have returned \"" + expected + "\".");
+      
+      input = "this hat";
+      expected = true;
+      assertEquals(
+            expected,
+            StringCaser.isLowerCase(input),
+            caseId + methodId + 
+            "isLowerCase should regard spaces as not affecting case.");
+      
+      input = "this!$hat";
+      expected = true;
+      assertEquals(
+            expected,
+            StringCaser.isLowerCase(input),
+            caseId + methodId + 
+            "isLowerCase should regard ~`!@#$%^&*()-_=+[]{};:'\",<>?/\\ as not affecting the string's case.");
+   }
+   
+   @Test
+   void testIsUpperCase()
+   {
+      String methodId = "testIsUpperCase(): ";
+      
+      String input = "this";
+      boolean expected = false;
+      assertEquals(
+            expected,
+            StringCaser.isUpperCase(input),
+            caseId + methodId + 
+            "isUpperCase(\"" + input + "\") should have returned \"" + expected + "\".");
+      
+      input = "THIS";
+      expected = true;
+      assertEquals(
+            expected,
+            StringCaser.isUpperCase(input),
+            caseId + methodId + 
+            "isUpperCase(\"" + input + "\") should have returned \"" + expected + "\".");
+   
+      input = "tHis";
+      expected = false;
+      assertEquals(
+            expected,
+            StringCaser.isUpperCase(input),
+            caseId + methodId + 
+            "isUpperCase(\"" + input + "\") should have returned \"" + expected + "\".");
+      
+      input = "THIS HAT";
+      expected = true;
+      assertEquals(
+            expected,
+            StringCaser.isUpperCase(input),
+            caseId + methodId + 
+            "isUpperCase should regard spaces as not affecting case.");
+      
+      input = "THIS!$HAT";
+      expected = true;
+      assertEquals(
+            expected,
+            StringCaser.isUpperCase(input),
+            caseId + methodId + 
+            "isUpperCase should regard ~`!@#$%^&*()-_=+[]{};:'\",<>?/\\ as not affecting case.");
+   }
 }

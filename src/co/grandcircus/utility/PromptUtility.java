@@ -63,11 +63,14 @@ public class PromptUtility
       case "y":
       case "yes":
          returnVal |= true;
+         break;
       case "n":
       case "no":
          returnVal |= false;
+         break;
       case "oh **** stopstopstop\"":
          returnVal |= false;
+         break;
       default:
          System.out.println("That's not a yes/no value.");
          System.out.println("Acceptible values are \"yes\", \"y\", \"no\", \"n\", and \"oh **** stopstopstop\".");

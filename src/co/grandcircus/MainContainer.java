@@ -2,23 +2,17 @@ package co.grandcircus;
 
 import java.util.Scanner;
 
+import co.grandcircus.utility.PromptUtility;
+
 public class MainContainer
 {
    
    public static void main(String[] args)
    {
-      /*
-      Scanner inputTokenizer = new Scanner(System.in);
+      PigLatinTranslator plTranslator = new PigLatinTranslator();
       
-      String sentence = "";
-      //Prompt user for sentence and fetch input
-      System.out.println("Please enter a sentence to convert to pig latin.");
-      String sentence = inputTokenizer.nextLine();
-      
-      sentence = new PigLatinTranslator().translateSentence(sentence);
-      System.out.println("Your sentence translates as \n");
-      System.out.println(sentence);
-      */
+      String toPL = PromptUtility.promptForString("Please enter a word to...uh...piglatinize?");
+      System.out.println("Your word is \"" + plTranslator.translateWord(toPL) + "\".");
 
    }
    

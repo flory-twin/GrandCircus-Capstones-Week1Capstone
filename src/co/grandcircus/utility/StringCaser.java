@@ -9,7 +9,7 @@ public class StringCaser
     * @param toCheck The String to be checked.
     * @return True if the parameter is in Title Case, false otherwise.
     */
-   public static boolean isWordTitleCase(String toCheck) {
+   public static boolean isTitleCase(String toCheck) {
       boolean returnVal = true;
       
       // Check failure conditions first.
@@ -45,5 +45,24 @@ public class StringCaser
       return returnVal;
    }
    
-
+   /**
+    * Convert the passed word to Title Case.
+    * Whitespace and special characters are accepted by this method, but may not produce 
+    * acceptable results. For example, "that's another" translates to "That's another".
+    * @param toConvert The String to convert.
+    * @return The converted String.
+    */
+   public static String toTitleCase(String toConvert){
+      String returnVal = "";
+      
+      if (toConvert.length() > 0)
+      {
+         returnVal += Character.toUpperCase(toConvert.charAt(0));
+         for (int remainingCharIndex = 1; remainingCharIndex < toConvert.length(); remainingCharIndex++) {
+            returnVal += Character.toLowerCase(toConvert.charAt(remainingCharIndex));
+         }
+      }
+      
+      return returnVal;
+   }
 }

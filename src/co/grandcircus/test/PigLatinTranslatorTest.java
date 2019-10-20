@@ -12,7 +12,7 @@ import co.grandcircus.PigLatinTranslator;
  */
 public class PigLatinTranslatorTest
 {
-   public static final String caseId = "PigLatinTranslatorTestNoJunit.";
+   public static final String caseId = "PigLatinTranslatorTest.";
    
    @Test
    void testSingleWordTranslation() {
@@ -21,14 +21,14 @@ public class PigLatinTranslatorTest
       
       assertEquals("Isthay",
          underTest.translateWord("This"), 
-         caseId + methodId + "'This' should have translated to 'isthay'.");
+         caseId + methodId + "'This' should have translated to 'Isthay'.");
       
       assertEquals("entencesay",
             underTest.translateWord("sentence"), 
             caseId + methodId + "'sentence' should have translated to 'entencesay'.");
       
-      assertEquals("existsway",
-            underTest.translateWord("exists"), 
+      assertEquals("EXISTSWAY",
+            underTest.translateWord("EXISTS"), 
             caseId + methodId + "'exists' should have translated to 'existsway'.");
       
       assertEquals("erehay",

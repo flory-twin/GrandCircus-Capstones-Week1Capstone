@@ -13,11 +13,23 @@ public class PigLatinTranslator
    public String translateWord(String wordToBeTranslated)
    {
       String translated = "";
-      //Case wordCase;
+      Case wordCase;
       //if (wordToBeTranslated.)
       //For Extended Challenge 1, if the word's cased as Title Case, we'll need to restore that after we finish.
       //For all other cases, including MiXeD CAsING, UPPERCASE, and lowercase, leaving the letter casing the same will not affect the word's casing.
-      boolean isTitleCase = StringCaser.isTitleCase(wordToBeTranslated);
+      if (StringCaser.isTitleCase(wordToBeTranslated))
+      {
+         wordCase = Case.TITLE;
+      }
+      else if (StringCaser.isUpperCase(wordToBeTranslated))
+      {
+         wordCase = Case.UPPER;
+      }
+      else {
+         wordCase = Case.LOWER;
+      }
+      
+      
       
       int cIndex = 0;
       for (char c : wordToBeTranslated.toCharArray())
@@ -31,24 +43,12 @@ public class PigLatinTranslator
             if (cIndex == 0) {
                //This is a special case: add "way" to the end of the word.
                translated = wordToBeTranslated + "way";
-               //EC1: Convert back to Titlecase, if necessary.
-               if (isTitleCase)
-               {
-                  translated = StringCaser.toTitleCase(translated);
-               }
-               //We don't want ANY further action to occur. Return right now!
-               return translated;
+               break;
             } 
             else {
                //This is a vowel...and we've reached it after traversing several consonants.
                translated = wordToBeTranslated.substring(cIndex, wordToBeTranslated.length()) + translated + "ay";
-               //EC1: Convert back to Titlecase, if necessary.
-               if (isTitleCase)
-               {
-                  translated = StringCaser.toTitleCase(translated);
-               }
-               //We don't want any further action to occur.
-               return translated;
+               break;
             }   
          }
          //Is this a consonant?
@@ -59,18 +59,29 @@ public class PigLatinTranslator
        //There are non-word and non-printing characters that could conceivably wind up here!
          else
          {
-            //For now, just go on to the next letter.
-            
+            //Divided to ease future changes
+            translated += character; 
          }
          
          //Remember to manually update the index!
          cIndex++;
       }
       
-      //If we get to this point, something went seriously wrong! 
-      //Dump debug information.
-      return "ERROR: translating " + wordToBeTranslated +
-            " with result "+ translated;
+      switch (wordCase)
+      {
+      case TITLE:
+         translated = StringCaser.toTitleCase(translated);
+         break;
+      case UPPER:
+         translated = translated.toUpperCase();
+         break;
+      case LOWER:
+         translated = translated.toLowerCase();
+      default:
+         //Don't modify the word further.
+      }
+      
+      return translated;
    }
    
    public String translateSentence(String toBeTranslated)

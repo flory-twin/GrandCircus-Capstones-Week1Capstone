@@ -11,14 +11,16 @@ public class PigLatinTranslator
    {
       String translated = "";
       
-      //Convert input to lowercase.
-      wordToBeTranslated = wordToBeTranslated.toLowerCase();
+      //For Extended Challenge 1, if the word's cased as Title Case, we'll need to restore that after we finish.
+      //For all other cases, including MiXeD CAsING, UPPERCASE, and lowercase, leaving the letter casing the same will not affect the word's casing.
+      
       
       int cIndex = 0;
       for (char c : wordToBeTranslated.toCharArray())
       {
          String character = Character.toString(c);
          
+         //
          //Is this a vowel?
          if (character.matches(vowelRegex)) {
             //This is a vowel, and it's the first character in the word.

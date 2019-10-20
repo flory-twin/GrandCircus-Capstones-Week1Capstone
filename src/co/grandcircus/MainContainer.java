@@ -11,14 +11,13 @@ public class MainContainer
    {
       PigLatinTranslator plTranslator = new PigLatinTranslator();
       
-      String toPL = PromptUtility.promptForString("Please enter a word to...uh...piglatinize?");
+      System.out.println("Welcome to the Pig Latin Translator!");
+      String toPL = "";
       boolean doContinue = true;
       do {
-         System.out.println("Your word is \"" + plTranslator.translateWord(toPL) + "\".");
-         doContinue &= PromptUtility.promptForYN("Want to continue (y/n)?");
-         if  (doContinue) {
-            toPL = PromptUtility.promptForString("Enter another word to ligpatin...whatever that word was.");
-         }
+         toPL = PromptUtility.promptForString("Enter a line to be translated: ");
+         System.out.println(plTranslator.translateWord(toPL));
+         doContinue = PromptUtility.promptForYN("Translate another line? (y/n): ");
       } while (doContinue);
       
 
